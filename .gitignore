@@ -1,0 +1,19 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.vscode/
+.idea/
+.DS_Store
+
+# 原始数据和数据库备份不进 Git
+data/raw/**
+!data/raw/**/.gitkeep
+data/dumps/**
+!data/dumps/**/.gitkeep
+
+# 临时/日志
+*.log
+.tmp/
