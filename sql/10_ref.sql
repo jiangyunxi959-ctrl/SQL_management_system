@@ -1,4 +1,4 @@
--- A：基础资料。先认识股票，再记录“哪一段时间是什么状态”。
+-- A：证券基础资料及名称、状态、行业和成分股的有效期。
 -- 保持 B 的证券、日历字段不变，因此原来的行情代码可以直接复用。
 CREATE TABLE IF NOT EXISTS ref.trading_calendar (
     cal_date date PRIMARY KEY,
