@@ -1,0 +1,3 @@
+-r requirements-a.txt
+backtrader==1.9.78.123
+pytest>=8,<10
