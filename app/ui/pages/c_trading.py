@@ -13,8 +13,9 @@ from app.trading.db import transaction
 
 st.set_page_config(page_title='知时 · 模拟交易',layout='wide')
 st.title('模拟交易')
-st.caption('日终提交，下一交易日开盘或收盘撮合。教学样本，不连接真实证券账户。')
+st.caption('独立演示页，需要手填用户编号。正式使用请从统一入口登录。日终提交，下一交易日开盘或收盘撮合。')
 user=int(st.number_input('演示用户 ID',min_value=1,value=2,step=1))
+account_key=f'c_trading_account_{user}'
 try:
     with st.form('create_account'):
         name=st.text_input('账户名称','我的模拟账户')
@@ -22,6 +23,7 @@ try:
         cash=st.number_input('初始资金（元）',min_value=1000,value=100000,step=1000)
         if st.form_submit_button('创建账户'):
             aid=create_account(user,name,start,cash)
+            st.session_state[account_key]=aid
             st.success(f'已创建账户 {aid}')
     with transaction(user_id=user,read_only=True) as conn:
         accounts=conn.execute('SELECT account_id,name,as_of_date,cash,frozen_cash FROM sim.account ORDER BY account_id').fetchall()
@@ -30,7 +32,10 @@ try:
     else:
         frame=pd.DataFrame(accounts,columns=['账户ID','名称','当前日终','资金余额','冻结资金'])
         st.dataframe(frame,hide_index=True)
-        aid=st.selectbox('操作账户',[r[0] for r in accounts])
+        account_ids=[r[0] for r in accounts]
+        selected=st.session_state.get(account_key)
+        index=account_ids.index(selected) if selected in account_ids else 0
+        aid=st.selectbox('操作账户',account_ids,index=index,key=account_key)
         with st.form('place_order'):
             code=st.text_input('股票代码','sh.600003')
             side=st.selectbox('方向',['B','S'],format_func=lambda x:'买入' if x=='B' else '卖出')

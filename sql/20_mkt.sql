@@ -127,6 +127,7 @@ CREATE OR REPLACE FUNCTION etl.try_numeric(p_text text)
 RETURNS numeric LANGUAGE plpgsql IMMUTABLE AS $$
 BEGIN
     IF p_text IS NULL OR btrim(p_text) = '' THEN RETURN NULL; END IF;
+    IF p_text::numeric::text IN ('NaN', 'Infinity', '-Infinity') THEN RETURN NULL; END IF;
     RETURN p_text::numeric;
 EXCEPTION WHEN others THEN
     RETURN NULL;
@@ -217,7 +218,7 @@ BEGIN
 
     WITH parsed AS (
         SELECT r.*,
-               count(*) OVER (PARTITION BY r.code, r.date) AS dup_count,
+               count(*) OVER (PARTITION BY r.code, etl.try_date(r.date)) AS dup_count,
                etl.try_date(r.date) AS p_date,
                etl.try_numeric(r.open) AS p_open,
                etl.try_numeric(r.high) AS p_high,
@@ -236,9 +237,13 @@ BEGIN
                    CASE WHEN p_date IS NOT NULL AND (p_date < date '2014-01-01' OR p_date >= date '2027-01-01') THEN '日期超出当前分区范围 2014-2026' END,
                    CASE WHEN code !~ '^(sh|sz|bj)\.[0-9]{6}$' THEN '非法证券代码' END,
                    CASE WHEN NOT EXISTS (SELECT 1 FROM ref.security s WHERE s.stock_code = p.code) THEN '证券未进入 ref.security' END,
-                   CASE WHEN p_close IS NULL OR p_close <= 0 THEN 'close 非法' END,
+                   CASE WHEN p_close IS NULL OR round(p_close,4) <= 0 OR round(p_close,4) >= 100000000 THEN 'close 非法' END,
+                   CASE WHEN nullif(btrim(open),'') IS NOT NULL AND (p_open IS NULL OR round(p_open,4) <= 0 OR round(p_open,4) >= 100000000) THEN 'open 非法' END,
+                   CASE WHEN nullif(btrim(high),'') IS NOT NULL AND (p_high IS NULL OR round(p_high,4) <= 0 OR round(p_high,4) >= 100000000) THEN 'high 非法' END,
+                   CASE WHEN nullif(btrim(low),'') IS NOT NULL AND (p_low IS NULL OR round(p_low,4) <= 0 OR round(p_low,4) >= 100000000) THEN 'low 非法' END,
+                   CASE WHEN nullif(btrim(preclose),'') IS NOT NULL AND (p_preclose IS NULL OR round(p_preclose,4) <= 0 OR round(p_preclose,4) >= 100000000) THEN 'preclose 非法' END,
                    CASE WHEN p_volume IS NULL OR p_volume < 0 THEN 'volume 非法' END,
-                   CASE WHEN p_amount IS NULL OR p_amount < 0 THEN 'amount 非法' END,
+                   CASE WHEN p_amount IS NULL OR p_amount < 0 OR round(p_amount,2) >= 1000000000000000000 THEN 'amount 非法' END,
                    CASE WHEN adjustflag IS DISTINCT FROM '3' THEN 'adjustflag 必须为 3（不复权）' END,
                    CASE WHEN tradestatus IS NULL OR tradestatus NOT IN ('0','1') THEN 'tradestatus 非法' END,
                    CASE WHEN tradestatus = '1' AND (p_open IS NULL OR p_high IS NULL OR p_low IS NULL) THEN '正常交易日 OHLC 不完整' END,
@@ -381,7 +386,7 @@ BEGIN
 
     WITH parsed AS (
         SELECT r.*,
-               count(*) OVER (PARTITION BY r.code, r."dividOperateDate") AS dup_count,
+               count(*) OVER (PARTITION BY r.code, etl.try_date(r."dividOperateDate")) AS dup_count,
                etl.try_date(r."dividOperateDate") AS p_date,
                etl.try_numeric(r."backAdjustFactor") AS p_factor
         FROM staging.adjust_factor_raw r
@@ -394,7 +399,7 @@ BEGIN
                    CASE WHEN dup_count > 1 THEN '批次内重复 code/dividOperateDate' END,
                    CASE WHEN p_date IS NULL THEN '非法除权除息日' END,
                    CASE WHEN NOT EXISTS (SELECT 1 FROM ref.security s WHERE s.stock_code = p.code) THEN '证券未进入 ref.security' END,
-                   CASE WHEN p_factor IS NULL OR p_factor <= 0 THEN 'backAdjustFactor 非法' END,
+                   CASE WHEN p_factor IS NULL OR round(p_factor,8) <= 0 OR round(p_factor,8) >= 10000000000 THEN 'backAdjustFactor 非法' END,
                    CASE WHEN EXISTS (
                        SELECT 1 FROM ref.security s
                        WHERE s.stock_code = p.code AND p_date < s.list_date
@@ -404,7 +409,7 @@ BEGIN
         FROM parsed p
         WHERE dup_count > 1
            OR p_date IS NULL
-           OR p_factor IS NULL OR p_factor <= 0
+           OR p_factor IS NULL OR round(p_factor,8) <= 0 OR round(p_factor,8) >= 10000000000
            OR NOT EXISTS (SELECT 1 FROM ref.security s WHERE s.stock_code = p.code)
            OR EXISTS (SELECT 1 FROM ref.security s WHERE s.stock_code = p.code AND p_date < s.list_date)
         RETURNING 1

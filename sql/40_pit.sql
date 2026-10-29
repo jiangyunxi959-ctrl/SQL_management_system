@@ -279,7 +279,7 @@ COMMENT ON COLUMN pit.indicator_daily.ema12 IS '12 日指数加权收盘均价�
 COMMENT ON COLUMN pit.indicator_daily.ema26 IS '26 日指数加权收盘均价。';
 COMMENT ON COLUMN pit.indicator_daily.ret_20d IS '20 日后复权收盘收益率。';
 COMMENT ON COLUMN pit.indicator_daily.ret_60d IS '60 日后复权收盘收益率。';
-COMMENT ON COLUMN pit.indicator_daily.vol_20d IS '20 日收益率样本标准差，沿用 B 的指标定义。';
+COMMENT ON COLUMN pit.indicator_daily.vol_20d IS '最近 20 个日对数收益的样本标准差年化（sqrt(252)）。';
 COMMENT ON COLUMN pit.indicator_daily.amount_20d IS '20 日平均成交额，沿用 B 的指标定义。';
 COMMENT ON COLUMN pit.industry.industry_code IS '单一分类体系中的行业代码。';
 COMMENT ON COLUMN pit.industry.name IS '当条记录对应的名称。';

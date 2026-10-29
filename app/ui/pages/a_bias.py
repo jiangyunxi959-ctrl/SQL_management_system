@@ -42,7 +42,7 @@ def read_at(as_of, code):
 
 st.set_page_config(page_title="知时 · 偏差演示", layout="wide")
 st.title("回到当时，数据库能看到什么？")
-st.caption("B+A 合成样本演示。更换研究日期，观察财报版本与指数成员如何变化。")
+st.caption("独立演示页。正式查询请从统一入口登录后进入历史资料。")
 as_of = st.date_input(
     "研究日期（日终）",
     date(2025, 5, 1),
