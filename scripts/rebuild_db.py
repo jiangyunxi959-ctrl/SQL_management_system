@@ -43,6 +43,8 @@ def set_role_passwords(conn: psycopg.Connection) -> None:
         "app_user": os.getenv("APP_USER_PASSWORD"),
         "agent_reader": os.getenv("AGENT_READER_PASSWORD"),
         "auditor": os.getenv("AUDITOR_PASSWORD"),
+        "audit_writer": os.getenv("AUDIT_WRITER_PASSWORD"),
+        "auth_login": os.getenv("AUTH_LOGIN_PASSWORD"),
     }
 
     with conn.cursor() as cur:
@@ -56,6 +58,15 @@ def set_role_passwords(conn: psycopg.Connection) -> None:
                     sql.Literal(password),
                 )
             )
+def ensure_d_roles(conn: psycopg.Connection) -> None:
+    """CREATE ROLE 不能放进后续安装事务，所以在编号 SQL 之前准备。"""
+    for role in ("audit_writer", "auth_login"):
+        with conn.cursor() as cur:
+            cur.execute("SELECT 1 FROM pg_roles WHERE rolname = %s", (role,))
+            if cur.fetchone() is None:
+                cur.execute(sql.SQL("CREATE ROLE {} LOGIN").format(sql.Identifier(role)))
+
+
 def sql_plan() -> list[Path]:
     sql_dir = ROOT / "sql"
     plan: list[Path] = [sql_dir / "00_init.sql"]
@@ -87,6 +98,9 @@ def main() -> None:
     if not args.yes:
         raise SystemExit("Refusing to drop database without --yes")
 
+    from app.setup_d import ensure_secrets
+    ensure_secrets()
+
     dbname = env("PGDATABASE", "zhishi")
     if not dbname.replace("_", "").isalnum():
         raise SystemExit(f"unsafe database name: {dbname!r}")
@@ -107,6 +121,7 @@ def main() -> None:
             cur.execute(sql.SQL("CREATE DATABASE {} ENCODING 'UTF8'").format(sql.Identifier(dbname)))
 
     with admin_conn(dbname) as conn:
+        ensure_d_roles(conn)
         plan = sql_plan()
         for path in plan:
             if args.no_seed and path.name == "sample_data.sql":
@@ -114,6 +129,14 @@ def main() -> None:
             execute_file(conn, path)
             if path.name == "00_init.sql":
                 set_role_passwords(conn)
+
+    with admin_conn(dbname) as conn:
+        from app.factors.catalog import register_public
+        register_public(conn)
+    from app.setup_ai import install as install_ai
+    install_ai(dbname)
+    from app.setup_d3 import install as install_d3
+    install_d3(dbname)
 
     print(f"[OK] rebuilt database {dbname!r}")
 

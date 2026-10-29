@@ -9,10 +9,11 @@ import psycopg
 import streamlit as st
 from app.backtest import run_backtest,replay_backtest
 from app.trading.db import transaction
+from app.ui.charts import time_series_chart
 
 st.set_page_config(page_title='知时 · 策略回测',layout='wide')
 st.title('策略回测')
-st.caption('用当日日终已知信息选股，次日开盘成交；包含费用、整手交易与交易限制。')
+st.caption('这是旧的独立回测页。正式入口是统一页面 http://127.0.0.1:8510 ，不要在这里手填用户编号。')
 user=int(st.number_input('演示用户 ID',min_value=1,value=2,step=1))
 try:
     with st.form('backtest'):
@@ -41,7 +42,8 @@ try:
             trades=conn.execute('SELECT o.exec_date,o.stock_code,o.side,o.qty,o.status,o.reason,f.price,f.fee FROM research.backtest_trade t JOIN sim.orders o USING(order_id) LEFT JOIN sim.fill f USING(order_id) WHERE t.run_id=%s ORDER BY o.order_id',[rid]).fetchall()
         if nav:
             chart=pd.DataFrame(nav,columns=['日期','净值','回撤']).set_index('日期').astype(float)
-            st.line_chart(chart[['净值']])
+            st.caption('净值已扣除默认交易费用，纵轴按区间自动缩放。')
+            st.altair_chart(time_series_chart(chart.reset_index(),'日期',['净值'],'账户净值（已计默认费用）',baseline=1),width='stretch')
             st.metric('区间收益',f'{(chart["净值"].iloc[-1]-1)*100:.2f}%')
             st.metric('最大回撤',f'{-chart["回撤"].min()*100:.2f}%')
         st.dataframe(pd.DataFrame(trades,columns=['执行日','代码','方向','数量','状态','说明','成交价','费用']),hide_index=True)
