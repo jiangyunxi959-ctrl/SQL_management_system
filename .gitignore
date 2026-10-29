@@ -1,4 +1,10 @@
 .env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+secret.txt
+*.dump
+*.backup
 .venv/
 venv/
 __pycache__/
@@ -17,3 +23,4 @@ data/dumps/**
 # 临时/日志
 *.log
 .tmp/
+.audit/
