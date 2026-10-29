@@ -1,0 +1,623 @@
+{
+  "url": "http://127.0.0.1:8517/",
+  "database": "zhishi_d3_web_20261029_sample",
+  "tests_user_id": 1147,
+  "known_ai_turns": [
+    {
+      "id": 94,
+      "status": "COMPLETED",
+      "model_calls": 5,
+      "tool_calls": 6,
+      "error": null,
+      "answer": {
+        "answer": "已完成：用公共因子 VWAP_D（当日成交均价，v1）计算了 2025-05-30 的截面，运行编号 562，股票池 SYNTH300（教学模式的模拟股票池，共 19 只成员）。在这个字段里，没有出现缺失值。\n\n【因子含义】表达式为 amount / volume，即当日成交额（元）÷ 当日成交股数（股），单位是“元/股（未调整价格）”；它反映当天实际成交的平均价位，与调整后价格序列不可直接比较 [E3]。\n\n【有效数量】股票池成员有 19 只，有效值为 19 只，缺失值为 0 只，有效比例为 1.0；没有口径为停牌或除权保护等原因造成的缺失记录 [E2][E5]。\n\n【分布（元/股，未调整价）】\n| 指标 | 数值 |\n|---|---|\n| 有效比例 | 100%（19/19） |\n| 中位数 | 20.0895 |\n| 25% 分位 | 16.9395 |\n| 75% 分位 | 23.2395 |\n| 样本标准差 | 4.0041 |\n| 最小～最大 | 13.0895～26.3895 |\n| 均值 | 20.0527 |\n\n【依据摘要】① 有效值为 19 个，缺失值为 0 个 [E5]；② 中位数为 20.0895，四分位距约为 16.94～23.24 [E5]；③ 标准差为 4.00，最小值到最大值的差距约为 13.30 元 [E5]；④ 全部为正值，没有零成交额或零成交量的异常值 [E5]；⑤ 估值最低的是 sh.600001（13.0895），最高的是 sz.000010（26.3895）[E6]。\n\n【限制】该字段是参考改编的日频公式（源文件公式缺失，并非通联原公式的完整复现）；它使用未调整价格，因此除权日前后数值会跳变，跨期比较时需要留意。以上只是当天截面描述，不构成对未来收益的判断。\n\n【表达式草稿】name：当日成交均价；expression：amount / volume。字段为日成交额和日成交量，窗口为 1 日，单位为元/股（未调整价）；当成交量等于 0（停牌或全天无成交）时无法计算，分母为 0 会产生缺失，不能用 0 代替。本轮直接调用的是已有公共因子 1:1，所以未额外提交新的语法校验；如需自建版本，可再提交 validate_expression 检查。",
+        "claims": [
+          {
+            "path": "data.valid_count",
+            "decimals": 0,
+            "raw_value": 19,
+            "evidence_id": "E5",
+            "display_unit": "count"
+          },
+          {
+            "path": "data.missing_count",
+            "decimals": 0,
+            "raw_value": 0,
+            "evidence_id": "E5",
+            "display_unit": "count"
+          },
+          {
+            "path": "data.valid_ratio",
+            "decimals": 2,
+            "raw_value": 1.0,
+            "evidence_id": "E5",
+            "display_unit": "percent"
+          },
+          {
+            "path": "data.median",
+            "decimals": 4,
+            "raw_value": 20.0895,
+            "evidence_id": "E5",
+            "display_unit": "raw"
+          },
+          {
+            "path": "data.p25",
+            "decimals": 4,
+            "raw_value": 16.9395,
+            "evidence_id": "E5",
+            "display_unit": "raw"
+          },
+          {
+            "path": "data.p75",
+            "decimals": 4,
+            "raw_value": 23.2395,
+            "evidence_id": "E5",
+            "display_unit": "raw"
+          },
+          {
+            "path": "data.stddev",
+            "decimals": 4,
+            "raw_value": "4.00405496220405011475224845964795",
+            "evidence_id": "E5",
+            "display_unit": "raw"
+          }
+        ],
+        "citations": [
+          "E2",
+          "E3",
+          "E5",
+          "E6"
+        ],
+        "limitations": [
+          "该公式为参考改编的日频公式，源文件公式缺失，并不等同于通联原公式的完整复现。",
+          "使用未调整价格，除权除息日前后数值不可直接跨期比较。",
+          "样本为教学模式的模拟股票池，仅有 19 只成员，不是真实历史指数。",
+          "成交量等于 0 时表达式无法计算，分母为零会产生缺失而非 0。"
+        ],
+        "expression_draft": null
+      }
+    },
+    {
+      "id": 95,
+      "status": "FAILED",
+      "model_calls": 3,
+      "tool_calls": 1,
+      "error": "百分比必须由小数换算",
+      "answer": null
+    },
+    {
+      "id": 96,
+      "status": "COMPLETED",
+      "model_calls": 1,
+      "tool_calls": 0,
+      "error": null,
+      "answer": {
+        "answer": "该评价在读取时尚未完成，或不属于本轮可读范围，我未获得任何 IC 数值，因此无法解释 1 日/5 日的平均 IC、Rank IC 和正 IC 比例，也无法用百分比展示这些比例。请确认评价编号 100 属于你的账号；如果状态显示未完成，可以稍后再读取一次摘要。",
+        "claims": [],
+        "citations": [],
+        "limitations": [
+          "评价报告未返回数值，不能给出 IC 或正 IC 比例的任何具体数字。"
+        ],
+        "expression_draft": null
+      }
+    },
+    {
+      "id": 97,
+      "status": "COMPLETED",
+      "model_calls": 2,
+      "tool_calls": 1,
+      "error": null,
+      "answer": {
+        "answer": "评价102（研究日2025-05-30，股票池SYNTH300，区间2025-05-10至2025-05-30，状态COMPLETED）结论：1日与5日两个期限的截面样本天数都很少，且每日仅19只股票参与，因此这些平均IC只能描述这个很小的教学样本，不能据此判断因子的预测能力。\n\n| 期限 | 有效天数 | 平均IC | 平均Rank IC | 正IC比例 | IC标准差 |\n|---|---|---|---|---|---|\n| 1日 | 14 | -0.9822 | -1.0000 | 0% | 0.0020 |\n| 5日 | 10 | -0.00113 | 0 | 50% | 1.0357 |\n| 20日 | 0 | 无（样本不足） | 无 | 无 | 无 |\n\n依据：\n1) 1日平均IC约为-0.982，平均Rank IC为-1.000，正IC比例为0%，也就是说14个有效交易日内每日IC都为负，符合同期Rank IC的负向单调关系[E1]。\n2) 但1日IC标准差仅0.0020，ICIR约为-493，数值极端，更像少数股票构成的样本上出现的退化相关，而不是稳定的经济关系[E1]。\n3) 5日平均IC为-0.00113，平均Rank IC为0，正IC比例为50%（10天中5天为正）；IC标准差1.0357，远大于均值，说明方向几乎由正负交替决定，不稳定[E1]。\n4) 5日只有10天有效：2025-05-26至05-30因样本不足无值；20日全部为INSUFFICIENT_SAMPLE，0天有效[E1]。\n5) 每日截面19只股票中，有效参与计算1日的分别为19、18、19等，部分日期少1只；缺失不等于0，也不代表停牌，只能说明这些日期可用的股票不足[E1]。\n\n样本局限：区间仅约3周、每日约19只股票、1日与5日重叠且高度相关，不能视作独立样本；20日无有效天数，因此无法评价较长期限；正IC比例基于10至14天，属于很小的计数样本；这些是教学数据上的分布统计，不证明盈利或可交易性。另需注意：1日IC与5日IC在多个日期数值几乎相同（如05-12至05-16），标签窗口重叠可能是原因，不能把两个期限当成互相验证[E1]。",
+        "claims": [
+          {
+            "path": "data.headline.h1_days",
+            "decimals": 0,
+            "raw_value": 14,
+            "evidence_id": "E1",
+            "display_unit": "count"
+          },
+          {
+            "path": "data.headline.h1_mean_ic",
+            "decimals": 4,
+            "raw_value": -0.9822119397538982,
+            "evidence_id": "E1",
+            "display_unit": "raw"
+          },
+          {
+            "path": "data.headline.h1_mean_rank_ic",
+            "decimals": 4,
+            "raw_value": -1.0,
+            "evidence_id": "E1",
+            "display_unit": "raw"
+          },
+          {
+            "path": "data.headline.h1_positive_ratio",
+            "decimals": 0,
+            "raw_value": 0.0,
+            "evidence_id": "E1",
+            "display_unit": "percent"
+          },
+          {
+            "path": "data.headline.h5_days",
+            "decimals": 0,
+            "raw_value": 10,
+            "evidence_id": "E1",
+            "display_unit": "count"
+          },
+          {
+            "path": "data.headline.h5_mean_ic",
+            "decimals": 5,
+            "raw_value": -0.0011267352873964801,
+            "evidence_id": "E1",
+            "display_unit": "raw"
+          },
+          {
+            "path": "data.headline.h5_mean_rank_ic",
+            "decimals": 4,
+            "raw_value": 0.0,
+            "evidence_id": "E1",
+            "display_unit": "raw"
+          },
+          {
+            "path": "data.headline.h5_positive_ratio",
+            "decimals": 0,
+            "raw_value": 0.5,
+            "evidence_id": "E1",
+            "display_unit": "percent"
+          },
+          {
+            "path": "data.headline.h20_days",
+            "decimals": 0,
+            "raw_value": 0,
+            "evidence_id": "E1",
+            "display_unit": "count"
+          },
+          {
+            "path": "data.summary.1.std_ic",
+            "decimals": 4,
+            "raw_value": 0.0019914395352872492,
+            "evidence_id": "E1",
+            "display_unit": "raw"
+          },
+          {
+            "path": "data.summary.5.std_ic",
+            "decimals": 4,
+            "raw_value": 1.035723346322209,
+            "evidence_id": "E1",
+            "display_unit": "raw"
+          }
+        ],
+        "citations": [
+          "E1"
+        ],
+        "limitations": [
+          "评价区间仅2025-05-10至2025-05-30，有效天数少（1日14天、5日10天、20日0天）",
+          "每日截面约19只股票，样本极小，缺失或不可用股票的来源未在本次返回中说明，不能归因于停牌或除权",
+          "1日与5日标签窗口重叠，不能视为独立证据",
+          "正IC比例为小样本计数比例，不代表统计显著性",
+          "结果为教学数据分布统计，不构成收益预测或盈利保证"
+        ],
+        "expression_draft": null
+      }
+    }
+  ],
+  "backtests": [
+    [
+      86,
+      false,
+      "COMPLETED",
+      "2025-05-30",
+      "99485.83",
+      "99624.55",
+      "138.72"
+    ],
+    [
+      87,
+      true,
+      "COMPLETED",
+      "2025-05-30",
+      "99624.55",
+      "99624.55",
+      "0.00"
+    ]
+  ],
+  "filled_trades": [
+    [
+      86,
+      11,
+      "138.72",
+      true
+    ],
+    [
+      87,
+      11,
+      "0.00",
+      true
+    ]
+  ],
+  "evaluations": [
+    [
+      100,
+      "COMPLETED",
+      "2025-05-30"
+    ],
+    [
+      102,
+      "COMPLETED",
+      "2025-05-30"
+    ]
+  ],
+  "isolation": {
+    "d3_other_20261029": {
+      "role": "app_user",
+      "cost_profiles": 0,
+      "private_formulas": 0,
+      "visible_test_evaluation": 0
+    },
+    "d3_browser_check_20261029": {
+      "role": "app_user",
+      "cost_profiles": 1,
+      "private_formulas": 1,
+      "visible_test_evaluation": 1
+    }
+  },
+  "latest_cancel_turn": [
+    101,
+    "CANCELLED",
+    1,
+    1
+  ],
+  "cross_user_ai": {
+    "turn_id": 102,
+    "status": "COMPLETED",
+    "model_calls": 2,
+    "tool_calls": 1,
+    "error": null,
+    "answer": {
+      "answer": "无法读取评价 102：工具返回 NOT_VISIBLE（当前上下文不可访问），按现有权限该评价对当前登录身份不可见，我未尝试更换身份或绕过限制。由于没有拿到 any 数据，本轮不能给出有效比例、中位数、25%/75% 分位数、样本标准差等任何指标。若该评价确属本人记录，请确认评价编号是否正确，或先通过 list_my_runs / evaluate_factor 建立并提交自己的评价作业，再用新编号读取。",
+      "claims": [],
+      "citations": [],
+      "limitations": [
+        "评价 102 返回 NOT_VISIBLE，本轮无任何可用数值。",
+        "无法判断该评价是否存在、属于他人或已过期，仅能说明当前身份不可访问。",
+        "未做任何身份、日期或权限变更。"
+      ],
+      "expression_draft": null
+    }
+  },
+  "future_date_rejected_in_browser": true,
+  "personal_prompt_saved": true,
+  "cross_user_tool_result": [
+    [
+      "REJECTED",
+      "NOT_VISIBLE"
+    ]
+  ],
+  "saved_prompt_versions": [
+    [
+      50,
+      1
+    ]
+  ],
+  "percent_fix_tests": {
+    "passed": 28,
+    "seconds": 10.69,
+    "new_cases": 13
+  },
+  "browser_console_warn_error_entries": 0,
+  "browser_verified": [
+    "login",
+    "public_factor_evaluation",
+    "groups_display",
+    "custom_maker_taker_save",
+    "factor_strategy_save",
+    "fee_and_zero_cost_backtest",
+    "adaptive_y_axis",
+    "personal_prompt_save",
+    "future_date_rejection",
+    "private_formula_save",
+    "logout_and_user_switch",
+    "private_visibility_isolation",
+    "deepseek_factor_statistics",
+    "deepseek_research_report_percentages",
+    "deepseek_cross_user_rejection",
+    "real_analysis_cancellation"
+  ],
+  "server": {
+    "port": 8517,
+    "local_windows_metadata_fallback": true,
+    "original_main_port_8510": "preserved",
+    "old_review_ports_8512_8513": "stopped to release memory"
+  },
+  "screenshots": [
+    ".audit/d3_web_latest/backtest.png",
+    ".audit/d3_web_latest/ai_percent.png",
+    ".audit/d3_web_latest/cancel.png",
+    ".audit/d3_web_latest/access_denied.png",
+    ".audit/d3_web_latest/comparison.png"
+  ],
+  "natural_code_comparison": {
+    "turn_id": 103,
+    "status": "COMPLETED",
+    "model_calls": 5,
+    "tool_calls": 12,
+    "error": null,
+    "answer": {
+      "answer": "结论：三个因子已在研究日2025-05-30、股票池SYNTH300上分别计算（共19只标的）。三项的缺失都很少，只有VOL20_D有1只因停牌缺失；但三者单位不同（MOM/VOL为无量纲比例，VWAP为元/股），只能分别描述分布，不能横向比较均值高低或优劣。\n\n| 指标 | MOM20_D | VOL20_D | VWAP_D |\n|---|---|---|---|\n| 含义 | 20日调整后收盘价涨幅 | 20日日对数收益标准差×√252（年化波动） | 当日成交额/成交量 |\n| 单位 | 无单位(小数) | 无单位(年化小数) | 元/股(未调整) |\n| 有效/缺失 | 19/19，缺失0 | 18/19，缺失1(停牌) | 19/19，缺失0 |\n| 有效比例 | 100% | 94.74% | 100% |\n| 中位数 | -0.716% | 0.566% | 20.0895元 |\n| p25–p75 | -0.848%~-0.620% | 0.494%~0.662% | 16.9395~23.2395元 |\n| 样本标准差 | 0.158% | 0.111% | 4.0041元 |\n\n限制：MOM20_D、VOL20_D均为项目补充公式，并非供应商因子原样复现；VWAP_D为参考改编（源公式缺失）。VOL20_D需21日窗口，该停牌股票的缺失并不表示0值。此分布仅描述本次截面，不构成预测能力证据。",
+      "claims": [
+        {
+          "path": "data.valid_count",
+          "decimals": 0,
+          "raw_value": 19,
+          "evidence_id": "E10",
+          "display_unit": "count"
+        },
+        {
+          "path": "data.missing_count",
+          "decimals": 0,
+          "raw_value": 0,
+          "evidence_id": "E10",
+          "display_unit": "count"
+        },
+        {
+          "path": "data.valid_ratio",
+          "decimals": 2,
+          "raw_value": 1.0,
+          "evidence_id": "E10",
+          "display_unit": "percent"
+        },
+        {
+          "path": "data.median",
+          "decimals": 4,
+          "raw_value": -0.007161072233424268,
+          "evidence_id": "E10",
+          "display_unit": "percent"
+        },
+        {
+          "path": "data.p25",
+          "decimals": 4,
+          "raw_value": -0.008484982775880527,
+          "evidence_id": "E10",
+          "display_unit": "percent"
+        },
+        {
+          "path": "data.p75",
+          "decimals": 4,
+          "raw_value": -0.006197827078507188,
+          "evidence_id": "E10",
+          "display_unit": "percent"
+        },
+        {
+          "path": "data.stddev",
+          "decimals": 4,
+          "raw_value": 0.0015779711064916428,
+          "evidence_id": "E10",
+          "display_unit": "percent"
+        },
+        {
+          "path": "data.valid_count",
+          "decimals": 0,
+          "raw_value": 18,
+          "evidence_id": "E11",
+          "display_unit": "count"
+        },
+        {
+          "path": "data.missing_count",
+          "decimals": 0,
+          "raw_value": 1,
+          "evidence_id": "E11",
+          "display_unit": "count"
+        },
+        {
+          "path": "data.valid_ratio",
+          "decimals": 2,
+          "raw_value": 0.9473684210526315,
+          "evidence_id": "E11",
+          "display_unit": "percent"
+        },
+        {
+          "path": "data.median",
+          "decimals": 4,
+          "raw_value": 0.005656616628194676,
+          "evidence_id": "E11",
+          "display_unit": "percent"
+        },
+        {
+          "path": "data.p25",
+          "decimals": 4,
+          "raw_value": 0.004939563917100149,
+          "evidence_id": "E11",
+          "display_unit": "percent"
+        },
+        {
+          "path": "data.p75",
+          "decimals": 4,
+          "raw_value": 0.006616137198011127,
+          "evidence_id": "E11",
+          "display_unit": "percent"
+        },
+        {
+          "path": "data.stddev",
+          "decimals": 4,
+          "raw_value": 0.001106716077035549,
+          "evidence_id": "E11",
+          "display_unit": "percent"
+        },
+        {
+          "path": "data.reason_counts.SUSPENDED",
+          "decimals": 0,
+          "raw_value": 1,
+          "evidence_id": "E11",
+          "display_unit": "count"
+        },
+        {
+          "path": "data.valid_count",
+          "decimals": 0,
+          "raw_value": 19,
+          "evidence_id": "E12",
+          "display_unit": "count"
+        },
+        {
+          "path": "data.missing_count",
+          "decimals": 0,
+          "raw_value": 0,
+          "evidence_id": "E12",
+          "display_unit": "count"
+        },
+        {
+          "path": "data.median",
+          "decimals": 4,
+          "raw_value": 20.0895,
+          "evidence_id": "E12",
+          "display_unit": "raw"
+        },
+        {
+          "path": "data.p25",
+          "decimals": 4,
+          "raw_value": 16.939500000000002,
+          "evidence_id": "E12",
+          "display_unit": "raw"
+        },
+        {
+          "path": "data.p75",
+          "decimals": 4,
+          "raw_value": 23.2395,
+          "evidence_id": "E12",
+          "display_unit": "raw"
+        },
+        {
+          "path": "data.stddev",
+          "decimals": 4,
+          "raw_value": 4.00405496220405,
+          "evidence_id": "E12",
+          "display_unit": "raw"
+        }
+      ],
+      "citations": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10",
+        "E11",
+        "E12"
+      ],
+      "limitations": [
+        "MOM20_D、VOL20_D为项目补充公式（PROJECT_ADDITION），非供应商原公式；VOL20_D为20日日对数收益样本标准差年化口径。",
+        "VWAP_D为DAILY_ADAPTATION参考改编，源公式缺失，不等于供应商完整复现；价格为未调整口径，除权日附近可能跳变。",
+        "VOL20_D缺失1只计为SUSPENDED（停牌），缺失不等于0；缺失原因可能重叠，不能相加当股票数。",
+        "三者单位不同，仅可分别描述分布，不可按均值高低排序或推断优劣；截面分布不证明预测能力或收益。"
+      ],
+      "expression_draft": null
+    },
+    "uses_current_system_prompt": true,
+    "operation_states": [
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ],
+      [
+        "SUCCEEDED",
+        null
+      ]
+    ]
+  },
+  "ui_disconnect_tests": {
+    "passed": 3,
+    "seconds": 10.6,
+    "scope": "Two injected temporary connection errors with recovery, plus existing UI flow"
+  },
+  "prompt_workflow_tests": {
+    "passed": 6,
+    "seconds": 6.97,
+    "launch_note": "Retried through cmd after PowerShell CoreCLR could not allocate memory"
+  },
+  "total_related_checks_passed": 37,
+  "fixes": [
+    "Research percentage fields use supported source ratios and retain exact-value checks",
+    "AI polling shows a retry message on temporary DB connection failure",
+    "Public factor codes are resolved through the catalog before asking for internal IDs"
+  ],
+  "latest_database_health": true,
+  "final_http_health": {
+    "status": 200,
+    "body": "ok"
+  },
+  "checked_source_sha256": {
+    "app/agent/evidence.py": "a46adef1c75d0305655a9317df67b8a8520bd19595cc72aa2ccbfc7556b8f71c",
+    "app/ui/pages/d_ai.py": "23108331bf326bf4ba221317794fe342421404777d257bb3e74eac1cb15d1dfe",
+    "docs/prompts/d2_system.md": "980daec76bfddaaaa7b510d10da9063542bbcefb45efbff243c5f6cb5e4cab3f"
+  },
+  "browser_comparison_tool_names": [
+    "list_factors",
+    "list_factors",
+    "list_factors",
+    "describe_factor",
+    "describe_factor",
+    "describe_factor",
+    "run_factor",
+    "run_factor",
+    "run_factor",
+    "factor_statistics",
+    "factor_statistics",
+    "factor_statistics"
+  ]
+}

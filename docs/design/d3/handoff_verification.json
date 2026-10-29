@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-29",
+  "delivery": "DESIGN_AND_HANDOFF_ONLY",
+  "markdown_files": 3,
+  "local_links": [
+    {
+      "file": "D3_分阶段实现计划.md",
+      "target": "D3_因子研究与成本方案.md",
+      "exists": true
+    },
+    {
+      "file": "D3_分阶段实现计划.md",
+      "target": "D3_AGENT_PROMPT.md",
+      "exists": true
+    },
+    {
+      "file": "D3_分阶段实现计划.md",
+      "target": "D2_实现验收.md",
+      "exists": true
+    },
+    {
+      "file": "D3_分阶段实现计划.md",
+      "target": "design/d3/handoff_verification.json",
+      "exists": true
+    },
+    {
+      "file": "D3_因子研究与成本方案.md",
+      "target": "D3_分阶段实现计划.md",
+      "exists": true
+    },
+    {
+      "file": "D3_因子研究与成本方案.md",
+      "target": "D3_AGENT_PROMPT.md",
+      "exists": true
+    }
+  ],
+  "remote_links": [
+    {
+      "url": "https://help.coinbase.com/en/exchange/trading-and-funding/exchange-fees",
+      "result": "not_verified",
+      "reason": "HTTPError"
+    },
+    {
+      "url": "https://one.sse.com.cn/onething/gptz/",
+      "status": 200,
+      "result": "reachable"
+    }
+  ],
+  "errors": [],
+  "fixture_checks": {
+    "positive_negative_ic": true,
+    "zero_variance_is_undefined": true,
+    "average_rank_ties": true,
+    "fee_components": true,
+    "net_profit_89_43": true,
+    "cash_10089_43": true,
+    "cost_affects_affordability": true
+  },
+  "secrets_in_deliverables": false,
+  "implementation_and_live_tests": "Not executed in this design-only turn; required gates are in Phase 0-9."
+}

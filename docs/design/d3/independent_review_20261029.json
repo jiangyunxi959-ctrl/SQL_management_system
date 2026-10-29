@@ -1,0 +1,79 @@
+{
+  "factor_values": {
+    "status": "COMPLETED",
+    "rows": 19,
+    "mismatches": 19,
+    "examples": [
+      {
+        "stock": "sh.600001",
+        "D3_value": "1",
+        "existing_database_value": "13.1192000000000000"
+      },
+      {
+        "stock": "sh.600003",
+        "D3_value": "1",
+        "existing_database_value": "14.5192000000000000"
+      },
+      {
+        "stock": "sh.600004",
+        "D3_value": "1",
+        "existing_database_value": "15.2192000000000000"
+      }
+    ]
+  },
+  "slippage": {
+    "same_equity_curve_for_zero_and_1000_bps": true,
+    "filled_rows": 1,
+    "trades": [
+      [
+        "3700",
+        "26.3543",
+        "28.99",
+        "97510.91",
+        "107263.00"
+      ]
+    ],
+    "net_last_without_slippage": "100185.00",
+    "net_last_with_slippage": "100185.00"
+  },
+  "cash_cache": {
+    "first_request_cash": "100000",
+    "second_request_cash": "200000",
+    "first_id": 25,
+    "second_id": 25,
+    "incorrectly_reused": true
+  },
+  "mutable_version": {
+    "write_accepted": true,
+    "before": "1000",
+    "after": "0",
+    "probe_rolled_back": true
+  },
+  "future_access": {
+    "trusted_research_date": "2025-05-30",
+    "requested_end": "2025-06-04",
+    "status": "COMPLETED",
+    "future_labels_returned": 76,
+    "note": "Scripted model used deliberately to test a malicious call, not a real-model acceptance claim."
+  },
+  "missing_terminal_nav": {
+    "requested_end": "2025-05-30",
+    "last_saved_nav_date": "2025-05-29"
+  },
+  "review_date": "2026-10-29",
+  "overall": "NOT_ACCEPTED_PARTIALLY_IMPLEMENTED",
+  "verification": {
+    "existing_tests_passed": 97,
+    "existing_tests_seconds": 179.72,
+    "sql_files_passed": 13,
+    "ema_comparison_passed": true,
+    "scope": "New isolated copy; business code and formal database unchanged."
+  },
+  "financials": {
+    "real_provider_records": 4,
+    "visible_2025_12_31": 0,
+    "visible_2026_10_29": 4,
+    "source_type": "PROVIDER_SNAPSHOT",
+    "teaching_records": 22
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "status": "PASS",
+  "markdown_files": 8,
+  "local_links": [
+    {
+      "from": "docs\\D2_AGENT_PROMPT.md",
+      "link": "prompts/d2_system.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_AI工作流设计.md",
+      "link": "D2_分阶段实现计划.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_AI工作流设计.md",
+      "link": "D2_AGENT_PROMPT.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_AI工作流设计.md",
+      "link": "D2_因子扩充目录.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_AI工作流设计.md",
+      "link": "prompts/d2_system.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_AI工作流设计.md",
+      "link": "prompts/d2_user_preferences.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_AI工作流设计.md",
+      "link": "prompts/d2_system.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_AI工作流设计.md",
+      "link": "prompts/d2_user_preferences.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_AI工作流设计.md",
+      "link": "D2_因子扩充目录.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_AI工作流设计.md",
+      "link": "http://127.0.0.1:8510/",
+      "result": "VERIFIED_IN_BROWSER_LOGIN_AND_NAVIGATION"
+    },
+    {
+      "from": "docs\\D2_分阶段实现计划.md",
+      "link": "D2_AI工作流设计.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_分阶段实现计划.md",
+      "link": "D2_AGENT_PROMPT.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_分阶段实现计划.md",
+      "link": "D2_因子扩充目录.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_分阶段实现计划.md",
+      "link": "prompts/d2_system.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_分阶段实现计划.md",
+      "link": "prompts/d2_user_preferences.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_分阶段实现计划.md",
+      "link": "design/d2/public_factors_50.json",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_分阶段实现计划.md",
+      "link": "design/d2/source_inventory_370.json",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_分阶段实现计划.md",
+      "link": "design/d2/design_validation.json",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_因子扩充目录.md",
+      "link": "design/d2/public_factors_50.json",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_因子扩充目录.md",
+      "link": "design/d2/source_inventory_370.json",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_因子扩充目录.md",
+      "link": "D2_AI工作流设计.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_因子扩充目录.md",
+      "link": "D2_分阶段实现计划.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_实现验收.md",
+      "link": "design/d2/runtime_verification_20261029.json",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_课堂演示.md",
+      "link": "../README_D.md",
+      "result": "PASS"
+    },
+    {
+      "from": "docs\\D2_课堂演示.md",
+      "link": "D2_实现验收.md",
+      "result": "PASS"
+    }
+  ],
+  "remote_links": [
+    {
+      "url": "https://api-docs.deepseek.com/",
+      "status": 200,
+      "result": "PASS",
+      "resolved": "https://api-docs.deepseek.com/"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/guides/thinking_mode/",
+      "status": 200,
+      "result": "PASS",
+      "resolved": "https://api-docs.deepseek.com/guides/thinking_mode/"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/guides/tool_calls/",
+      "status": 200,
+      "result": "PASS",
+      "resolved": "https://api-docs.deepseek.com/guides/tool_calls/"
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+      "status": 200,
+      "result": "PASS",
+      "resolved": "https://docs.langchain.com/oss/python/langgraph/overview"
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+      "status": 200,
+      "result": "PASS",
+      "resolved": "https://docs.langchain.com/oss/python/langgraph/persistence"
+    }
+  ],
+  "failures": [],
+  "catalog_validation": "50 formulas accepted; 10 existing unchanged; 40 proposed not installed",
+  "source_validation": "370 entries, checksum and four adaptation references verified",
+  "runtime_scope": "This checker validates documents only. Runtime evidence is in runtime_verification_20261029.json."
+}

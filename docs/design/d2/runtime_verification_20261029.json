@@ -1,0 +1,547 @@
+{
+  "date": "2026-10-29",
+  "scope": "course database project; local independent acceptance",
+  "model": "deepseek-flash",
+  "live_scenarios": [
+    {
+      "scenario": "vwap",
+      "passed": true,
+      "seconds": 10.0,
+      "model_calls": 5,
+      "tool_calls": 4,
+      "tools": [
+        "list_factors",
+        "describe_factor",
+        "run_factor",
+        "factor_statistics"
+      ]
+    },
+    {
+      "scenario": "comparison",
+      "passed": true,
+      "seconds": 10.938,
+      "model_calls": 4,
+      "tool_calls": 7,
+      "tools": [
+        "list_factors",
+        "list_factors",
+        "run_factor",
+        "run_factor",
+        "compare_factor_runs",
+        "factor_statistics",
+        "factor_statistics"
+      ]
+    },
+    {
+      "scenario": "history",
+      "passed": true,
+      "seconds": 6.454,
+      "model_calls": 3,
+      "tool_calls": 2,
+      "tools": [
+        "list_my_runs",
+        "factor_statistics"
+      ]
+    },
+    {
+      "scenario": "draft",
+      "passed": true,
+      "seconds": 4.094,
+      "model_calls": 2,
+      "tool_calls": 1,
+      "tools": [
+        "validate_expression"
+      ]
+    },
+    {
+      "scenario": "clarification",
+      "passed": true,
+      "seconds": 2.359,
+      "model_calls": 1,
+      "tool_calls": 0,
+      "tools": []
+    },
+    {
+      "scenario": "defense",
+      "passed": true,
+      "seconds": 3.203,
+      "model_calls": 1,
+      "tool_calls": 0,
+      "tools": []
+    }
+  ],
+  "regression": {
+    "passed": 85,
+    "seconds": 210.52,
+    "command": "python -m pytest tests/c tests/d -q"
+  },
+  "sql": {
+    "files_passed": 13,
+    "ema_independent_comparison_passed": true
+  },
+  "real_factors": {
+    "factor_count": 50,
+    "stock_results": 1000,
+    "date": "2025-12-31",
+    "pool": "DREAL20",
+    "pool_type": "fixed verification sample; not historical actual index",
+    "every_factor_has_valid_values": true,
+    "independent_values_and_missing_reasons_match": true,
+    "details": [
+      {
+        "code": "AMOUNT_MEAN20_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 20,
+        "seconds": 1.219,
+        "run_id": 11
+      },
+      {
+        "code": "AMOUNT_MEAN5_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 5,
+        "seconds": 0.641,
+        "run_id": 12
+      },
+      {
+        "code": "AMOUNT_MEAN60_D",
+        "rows": 20,
+        "valid": 17,
+        "history": 60,
+        "seconds": 2.703,
+        "run_id": 13
+      },
+      {
+        "code": "AMOUNT_REL20_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 21,
+        "seconds": 1.297,
+        "run_id": 14
+      },
+      {
+        "code": "AMOUNT_REL5_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 6,
+        "seconds": 0.828,
+        "run_id": 15
+      },
+      {
+        "code": "AMOUNT_REL60_D",
+        "rows": 20,
+        "valid": 17,
+        "history": 61,
+        "seconds": 2.672,
+        "run_id": 16
+      },
+      {
+        "code": "BODY_STRENGTH_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 1,
+        "seconds": 1.609,
+        "run_id": 17
+      },
+      {
+        "code": "CLOSE_POSITION_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 1,
+        "seconds": 1.687,
+        "run_id": 18
+      },
+      {
+        "code": "DAILY_ILLIQ20_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 21,
+        "seconds": 1.25,
+        "run_id": 19
+      },
+      {
+        "code": "DAILY_ILLIQ5_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 6,
+        "seconds": 0.734,
+        "run_id": 20
+      },
+      {
+        "code": "INTRADAY_MEAN20_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 20,
+        "seconds": 1.219,
+        "run_id": 21
+      },
+      {
+        "code": "INTRADAY_MEAN5_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 5,
+        "seconds": 0.61,
+        "run_id": 22
+      },
+      {
+        "code": "LOWER_SHADOW_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 1,
+        "seconds": 1.625,
+        "run_id": 23
+      },
+      {
+        "code": "MA10_BIAS_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 10,
+        "seconds": 0.734,
+        "run_id": 24
+      },
+      {
+        "code": "MA120_BIAS_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 120,
+        "seconds": 0.406,
+        "run_id": 25
+      },
+      {
+        "code": "MA20_BIAS_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 20,
+        "seconds": 1.172,
+        "run_id": 26
+      },
+      {
+        "code": "MA5_BIAS_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 5,
+        "seconds": 0.594,
+        "run_id": 27
+      },
+      {
+        "code": "MA60_BIAS_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 60,
+        "seconds": 2.609,
+        "run_id": 28
+      },
+      {
+        "code": "MOM10_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 11,
+        "seconds": 0.938,
+        "run_id": 29
+      },
+      {
+        "code": "MOM120_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 121,
+        "seconds": 0.593,
+        "run_id": 30
+      },
+      {
+        "code": "MOM20_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 21,
+        "seconds": 1.266,
+        "run_id": 31
+      },
+      {
+        "code": "MOM250_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 251,
+        "seconds": 0.641,
+        "run_id": 32
+      },
+      {
+        "code": "MOM5_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 6,
+        "seconds": 0.64,
+        "run_id": 33
+      },
+      {
+        "code": "MOM60_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 61,
+        "seconds": 3.172,
+        "run_id": 34
+      },
+      {
+        "code": "OVERNIGHT_INTRADAY_DIFF_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 2,
+        "seconds": 0.5,
+        "run_id": 35
+      },
+      {
+        "code": "OVERNIGHT_MEAN20_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 21,
+        "seconds": 1.234,
+        "run_id": 36
+      },
+      {
+        "code": "OVERNIGHT_MEAN5_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 6,
+        "seconds": 0.735,
+        "run_id": 37
+      },
+      {
+        "code": "RANGE_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 1,
+        "seconds": 1.843,
+        "run_id": 38
+      },
+      {
+        "code": "RANGE_MEAN20_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 20,
+        "seconds": 1.594,
+        "run_id": 39
+      },
+      {
+        "code": "RANGE_MEAN5_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 5,
+        "seconds": 0.672,
+        "run_id": 40
+      },
+      {
+        "code": "RANGE_STD20_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 20,
+        "seconds": 1.422,
+        "run_id": 41
+      },
+      {
+        "code": "RET_INTRADAY_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 1,
+        "seconds": 1.937,
+        "run_id": 42
+      },
+      {
+        "code": "RET_OVERNIGHT_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 2,
+        "seconds": 0.907,
+        "run_id": 43
+      },
+      {
+        "code": "UPPER_SHADOW_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 1,
+        "seconds": 1.875,
+        "run_id": 44
+      },
+      {
+        "code": "VOL10_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 11,
+        "seconds": 1.093,
+        "run_id": 45
+      },
+      {
+        "code": "VOL120_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 121,
+        "seconds": 0.719,
+        "run_id": 46
+      },
+      {
+        "code": "VOL20_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 21,
+        "seconds": 1.5,
+        "run_id": 47
+      },
+      {
+        "code": "VOL5_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 6,
+        "seconds": 1.844,
+        "run_id": 48
+      },
+      {
+        "code": "VOL60_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 61,
+        "seconds": 4.203,
+        "run_id": 49
+      },
+      {
+        "code": "VOLUME_CHANGE1_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 2,
+        "seconds": 0.672,
+        "run_id": 50
+      },
+      {
+        "code": "VOLUME_REL10_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 11,
+        "seconds": 0.906,
+        "run_id": 51
+      },
+      {
+        "code": "VOLUME_REL20_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 21,
+        "seconds": 1.407,
+        "run_id": 52
+      },
+      {
+        "code": "VOLUME_REL5_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 6,
+        "seconds": 0.765,
+        "run_id": 53
+      },
+      {
+        "code": "VOLUME_REL60_D",
+        "rows": 20,
+        "valid": 17,
+        "history": 61,
+        "seconds": 2.938,
+        "run_id": 54
+      },
+      {
+        "code": "VWAP10_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 10,
+        "seconds": 0.906,
+        "run_id": 55
+      },
+      {
+        "code": "VWAP20_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 20,
+        "seconds": 1.266,
+        "run_id": 56
+      },
+      {
+        "code": "VWAP5_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 5,
+        "seconds": 0.656,
+        "run_id": 57
+      },
+      {
+        "code": "VWAP60_D",
+        "rows": 20,
+        "valid": 17,
+        "history": 60,
+        "seconds": 2.875,
+        "run_id": 58
+      },
+      {
+        "code": "VWAP_BIAS_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 1,
+        "seconds": 1.937,
+        "run_id": 59
+      },
+      {
+        "code": "VWAP_D",
+        "rows": 20,
+        "valid": 20,
+        "history": 1,
+        "seconds": 1.735,
+        "run_id": 60
+      }
+    ]
+  },
+  "defense": {
+    "cross_owner_table_checks": 16,
+    "no_identity_rows": 0,
+    "privilege_escalation_and_drop_blocked": true,
+    "checkpoint_role": "checkpoint_writer",
+    "checkpoint_role_superuser": false,
+    "checkpoint_role_bypassrls": false
+  },
+  "restore": {
+    "no_identity_rows": 0,
+    "role_escalation_and_drop_blocked": true,
+    "restore_database": "zhishi_d2_live_restore_final_20261029_sample",
+    "dump_bytes": 1607755,
+    "restored_counts": {
+      "mkt.daily_bar": 10440,
+      "factor.definition": 54,
+      "factor.version": 54,
+      "factor.run": 18,
+      "factor.value": 342,
+      "agent.conversation": 30,
+      "agent.turn": 30,
+      "agent.message": 300,
+      "agent.evidence": 81,
+      "agent.tool_execution": 87,
+      "agent.graph_checkpoint": 241,
+      "agent.checkpoint_write": 1847,
+      "agent.prompt_profile": 10,
+      "agent.prompt_version": 14
+    },
+    "restored_preference_and_conversation_read": true,
+    "continued_after_restore": true
+  },
+  "browser": {
+    "entry": "http://127.0.0.1:8510/",
+    "real_question_and_evidence": true,
+    "private_preference_saved": true,
+    "two_user_isolation": true,
+    "cancel_click": true,
+    "cancel_turn_model_calls": 1,
+    "cancel_turn_tool_calls": 0,
+    "same_thread_question_after_cancel": true,
+    "history_after_login": true,
+    "final_question_after_checkpoint_role_separation": {
+      "completed": true,
+      "model_calls": 4,
+      "tool_calls": 3
+    }
+  },
+  "secrets": "configured only in ignored server .env; repository-visible files scanned",
+  "limitations": [
+    "Small verification samples, not a profitability or large-scale concurrency claim.",
+    "Cancellation stops subsequent calls; in-flight network requests may need up to 30 seconds to end.",
+    "Full local traces and screenshots remain in ignored .audit/d_review."
+  ]
+}

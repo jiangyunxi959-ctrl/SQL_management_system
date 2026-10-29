@@ -1,0 +1,152 @@
+{
+  "unchanged_input_reuse": {
+    "same_id": true,
+    "original": {
+      "id": 61,
+      "value": "13.1192",
+      "rows": 19,
+      "version": "7"
+    }
+  },
+  "actual_legacy_45": {
+    "stored_cutoff": null,
+    "engine": "d3.3",
+    "service_read": {
+      "accepted": false,
+      "error_type": "PermissionError",
+      "message": "该评价没有可靠的计算截止日，不能作为当前研究依据，请重新计算"
+    },
+    "service_compare": {
+      "accepted": false,
+      "error_type": "PermissionError",
+      "message": "该评价没有可靠的计算截止日，不能作为当前研究依据，请重新计算"
+    },
+    "tool_read": {
+      "accepted": false,
+      "error_type": "PermissionError",
+      "message": "该评价没有可靠的计算截止日，不能作为当前研究依据，请重新计算"
+    },
+    "tool_compare": {
+      "accepted": false,
+      "error_type": "ToolRejected",
+      "message": "该评价没有可靠的计算截止日，不能作为当前研究依据，请重新计算"
+    }
+  },
+  "data_changes": {
+    "volume": {
+      "original_volume": 141700,
+      "revised_volume": 142700,
+      "before": {
+        "id": 61,
+        "value": "13.1192",
+        "rows": 19,
+        "version": "7"
+      },
+      "after": {
+        "id": 62,
+        "value": "13.02726447091800981079187106",
+        "rows": 19,
+        "version": "8"
+      }
+    },
+    "amount": {
+      "id": 64,
+      "value": "13.02727147862648913805185704",
+      "rows": 19,
+      "version": "9"
+    },
+    "membership_actual_exclusion": {
+      "id": 65,
+      "value": null,
+      "rows": 18,
+      "version": "10"
+    },
+    "explicit_old_key_after_new_data": {
+      "accepted": false,
+      "error_type": "ValueError",
+      "message": "提交编号已用于其他参数，或属于旧引擎结果；请使用新的提交编号"
+    }
+  },
+  "evaluation_change_before_publish": {
+    "status": "FAILED",
+    "saved_values": 0
+  },
+  "backtest_change_before_publish": {
+    "status": "FAILED",
+    "saved_nav": 0,
+    "saved_trades": 0,
+    "error": "计算期间数据版本已变化，不发布与实际读取不一致的结果"
+  },
+  "restored_inputs": {
+    "volume_and_amount_restored": true,
+    "membership_restored": true,
+    "note": "Revision numbers intentionally remain monotonic after the restoring writes."
+  },
+  "revision_permissions": {
+    "watched_tables": [
+      "mkt.adj_factor",
+      "mkt.daily_bar",
+      "ref.fee_rule",
+      "ref.index_member",
+      "ref.price_limit_rule",
+      "ref.security",
+      "ref.security_status",
+      "ref.trading_calendar"
+    ],
+    "app_user_can_update": false,
+    "app_user_can_delete": false,
+    "app_user_can_read_version_through_function": true
+  },
+  "verification": {
+    "date": "2026-10-29",
+    "scope": "Fourth-review fix acceptance passed; not overall D3 final acceptance",
+    "all_original_c_d_tests": {
+      "total_passed": 105,
+      "sequential_groups": [
+        {
+          "group": "d_backend",
+          "exit_code": 0,
+          "summary": "........................................................................ [ 88%]\n.........                                                                [100%]\n81 passed in 133.86s (0:02:13)",
+          "file_count": 21
+        },
+        {
+          "group": "c_backend",
+          "exit_code": 0,
+          "summary": "......                                                                   [100%]\n6 passed in 33.36s",
+          "file_count": 2
+        },
+        {
+          "group": "ui",
+          "exit_code": 0,
+          "summary": "..................                                                       [100%]\n18 passed in 33.41s",
+          "file_count": 5
+        }
+      ]
+    },
+    "sql": {
+      "files": 13,
+      "ema_passed": true,
+      "data_quality": [
+        0,
+        0,
+        0
+      ]
+    },
+    "environment": {
+      "initial_full_test_attempt": {
+        "passed": 91,
+        "failed": 2,
+        "errors": 12,
+        "accepted_as_pass": false
+      },
+      "second_single_process_attempt": "Stopped after database service exited; not counted as pass",
+      "final_mode": "Sequential groups, with only local Windows metadata WMI query using Python native fallback",
+      "real_password_hashing": "Verified separately, algorithm not replaced",
+      "database_recovery": "Original pgdata and port 55436; no rebuild or business-data modification in formal database",
+      "sequence_adjustment": "Only five lagging sequences in the independent probe copy advanced to existing maximum values; no adjustment needed in gate copy"
+    },
+    "real_deepseek": "NOT_RERUN",
+    "browser": "NOT_RERUN; 18 UI/statistics assertions passed in original tests",
+    "overall_d3_final_acceptance": "PENDING_REAL_AI_AND_FULL_DEMO"
+  }
+}

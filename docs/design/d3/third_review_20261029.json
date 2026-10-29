@@ -1,0 +1,150 @@
+{
+  "direct_future_request": {
+    "service_rejected": true,
+    "evaluation_rows_after_service_and_agent_requests": 0,
+    "tool_evidence": []
+  },
+  "cash_binding": {
+    "distinct_ids": true,
+    "same_request_reused": true,
+    "requests": [
+      [
+        38,
+        "100000.00",
+        "d3.3"
+      ],
+      [
+        39,
+        "200000.00",
+        "d3.3"
+      ]
+    ],
+    "terminal_equity": [
+      [
+        38,
+        "100146.15"
+      ],
+      [
+        39,
+        "200296.25"
+      ]
+    ]
+  },
+  "final_step_cancellation": {
+    "immediately_after_cancel": "CANCELLED",
+    "after_real_worker_publish": "CANCELLED",
+    "saved_rows": 0
+  },
+  "saved_later_cutoff_report": {
+    "eval_id": 45,
+    "signal_start": "2025-05-28",
+    "signal_end": "2025-05-30",
+    "actual_computation_cutoff": "2025-06-04",
+    "earlier_read_cutoff": "2025-05-30",
+    "service_accepted": true,
+    "future_nonempty_labels_in_saved_evaluation": 38,
+    "returned_headline_at_earlier_cutoff": {
+      "h1_days": 3,
+      "h1_mean_ic": "-0.981266235786308145570164987",
+      "h1_mean_rank_ic": "-1.000000000000000000000000000",
+      "h1_positive_ratio": "0.0",
+      "h5_days": 1,
+      "h5_mean_ic": "0.9812970264806739775438197155",
+      "h5_mean_rank_ic": "1.000000000000000000000000000",
+      "h5_positive_ratio": "1.0",
+      "h20_days": 0
+    },
+    "agent_tool_result": {
+      "ok": true,
+      "context": {
+        "tool": "evaluation_report",
+        "as_of": "2025-05-30",
+        "turn_id": 45,
+        "universe": "SYNTH300",
+        "data_mode": "TEACHING"
+      },
+      "object_ref": "45",
+      "headline": {
+        "h1_days": 3,
+        "h5_days": 1,
+        "h20_days": 0,
+        "h1_mean_ic": "-0.981266235786308145570164987",
+        "h5_mean_ic": "0.9812970264806739775438197155",
+        "h1_mean_rank_ic": "-1.000000000000000000000000000",
+        "h5_mean_rank_ic": "1.000000000000000000000000000",
+        "h1_positive_ratio": "0.0",
+        "h5_positive_ratio": "1.0"
+      }
+    }
+  },
+  "corporate_action": {
+    "bt_id": 41,
+    "status": "COMPLETED",
+    "source_event": {
+      "stock": "sh.600001",
+      "ex_date": "2025-06-16",
+      "back_factor_before": "1.00",
+      "back_factor_after": "1.08"
+    },
+    "trades": [
+      [
+        "sh.600001",
+        "2025-06-12",
+        "2025-06-13",
+        "B",
+        7700,
+        "FILLED",
+        null
+      ]
+    ],
+    "curve": [
+      [
+        "2025-06-12",
+        "100000.00"
+      ],
+      [
+        "2025-06-13",
+        "100372.68"
+      ],
+      [
+        "2025-06-16",
+        "92939.10"
+      ],
+      [
+        "2025-06-17",
+        "92919.85"
+      ]
+    ],
+    "execution_function_checks": {
+      "normal": null,
+      "limit_up": "涨停不买入",
+      "limit_down": "跌停不卖出",
+      "suspended": "执行日停牌或无成交量",
+      "event_day_order": "跨除权事件，需有分红送转明细后才能撮合"
+    },
+    "note": "Uses existing dataset event with no data changes. An unsupported held corporate action should stop the run; order-only checks do not protect held positions."
+  },
+  "verification": {
+    "date": "2026-10-29",
+    "engine": "d3.3",
+    "database": "zhishi_d3_third_review_20261029_sample",
+    "tests": {
+      "passed": 101,
+      "seconds": 192.62
+    },
+    "sql_files": 13,
+    "ema_passed": true,
+    "real_deepseek": "NOT_RERUN",
+    "overall": "NOT_ACCEPTED"
+  },
+  "browser": {
+    "port": 8515,
+    "saved_strategy": 43,
+    "version": 1,
+    "top_n": null,
+    "top_pct": "0.2",
+    "console_warn_error_entries": 0,
+    "scope": "login, percentage selection and save; no full AI or network audit",
+    "screenshot": ".audit/d3_third_review/browser_percentage.png"
+  }
+}

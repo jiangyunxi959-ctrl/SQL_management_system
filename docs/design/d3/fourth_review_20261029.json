@@ -1,0 +1,153 @@
+{
+  "new_date_protection": {
+    "metadata": [
+      [
+        51,
+        "2025-05-28",
+        "2025-05-30",
+        "2025-06-04",
+        "d3.4"
+      ],
+      [
+        52,
+        "2025-05-28",
+        "2025-05-30",
+        "2025-05-30",
+        "d3.4"
+      ]
+    ],
+    "earlier_read": {
+      "accepted": false,
+      "error_type": "PermissionError",
+      "message": "评价超出当前研究日"
+    },
+    "earlier_compare": {
+      "accepted": false,
+      "error_type": "PermissionError",
+      "message": "评价超出当前研究日"
+    },
+    "different_cutoff_compare_at_later_date": {
+      "accepted": false,
+      "error_type": "ValueError",
+      "message": "两次评价的计算截止日不同，不能直接比较"
+    },
+    "tool_read": {
+      "accepted": false,
+      "error_type": "PermissionError",
+      "message": "评价超出当前研究日"
+    },
+    "tool_compare": {
+      "accepted": false,
+      "error_type": "ToolRejected",
+      "message": "评价超出当前研究日"
+    }
+  },
+  "upgraded_legacy_report": {
+    "eval_id": 45,
+    "old_engine": "d3.3",
+    "stored_as_of_date": null,
+    "request_as_of": "2025-05-30",
+    "future_nonempty_labels": 38,
+    "service": {
+      "accepted": true,
+      "result": {
+        "status": "COMPLETED",
+        "start": "2025-05-28",
+        "end": "2025-05-30",
+        "as_of": "2025-05-30",
+        "headline": {
+          "h1_days": 3,
+          "h1_mean_ic": "-0.981266235786308145570164987",
+          "h1_mean_rank_ic": "-1.000000000000000000000000000",
+          "h1_positive_ratio": "0.0",
+          "h5_days": 1,
+          "h5_mean_ic": "0.9812970264806739775438197155",
+          "h5_mean_rank_ic": "1.000000000000000000000000000",
+          "h5_positive_ratio": "1.0",
+          "h20_days": 0
+        }
+      }
+    },
+    "tool": {
+      "accepted": true,
+      "result": {
+        "ok": true,
+        "context": {
+          "as_of": "2025-05-30",
+          "universe": "SYNTH300",
+          "data_mode": "TEACHING",
+          "turn_id": 53,
+          "tool": "evaluation_report"
+        },
+        "error_code": null,
+        "headline": {
+          "h1_days": 3,
+          "h1_mean_ic": "-0.981266235786308145570164987",
+          "h1_mean_rank_ic": "-1.000000000000000000000000000",
+          "h1_positive_ratio": "0.0",
+          "h5_days": 1,
+          "h5_mean_ic": "0.9812970264806739775438197155",
+          "h5_mean_rank_ic": "1.000000000000000000000000000",
+          "h5_positive_ratio": "1.0",
+          "h20_days": 0
+        }
+      }
+    },
+    "note": "Existing d3.3 result 45 from the third independent review. No artificial NULL assignment or report insertion."
+  },
+  "held_event": {
+    "bt_id": 47,
+    "factor": "close_hfq",
+    "direction": "LOW",
+    "initial_cash": "100000",
+    "start": "2025-06-12",
+    "end": "2025-06-17",
+    "status": "FAILED",
+    "error": "sh.600001 在 2025-06-16 持仓跨过未支持的除权事件，已停止并放弃本次收益",
+    "saved_nav_rows": 0
+  },
+  "data_revision": {
+    "stock": "sh.600001",
+    "trade_date": "2025-05-28",
+    "original_volume": 141700,
+    "changed_volume": 142700,
+    "data_fingerprint_unchanged": true,
+    "original_eval_id": 53,
+    "after_revision_default_eval_id": 53,
+    "incorrectly_reused": true,
+    "original_value": "13.1192",
+    "cached_value": "13.1192",
+    "forced_new_eval_id": 54,
+    "forced_new_value": "13.02726447091800981079187106",
+    "expected_from_revised_inputs": "13.02726447091800981079187106",
+    "only_copy_changed": true,
+    "volume_restored": true
+  },
+  "verification": {
+    "date": "2026-10-29",
+    "engine": "d3.4",
+    "database": "zhishi_d3_fourth_review_20261029_sample",
+    "full_tests": {
+      "passed": 103,
+      "seconds": 214.56
+    },
+    "sql": {
+      "initial": "OUT_OF_MEMORY",
+      "retry": "ALL_PASS",
+      "files": 13,
+      "ema_passed": true,
+      "retry_after": "Stopped own old review servers 8514 and 8515; waited for full tests; restored revised volume; ran SQL checks sequentially."
+    },
+    "real_deepseek": "NOT_RERUN",
+    "overall": "NOT_ACCEPTED"
+  },
+  "browser": {
+    "port": 8516,
+    "research_date": "2025-05-30",
+    "requested_end": "2025-06-04",
+    "rejected_message": "评价日期不能晚于研究日",
+    "console_warn_error_entries": 0,
+    "screenshot": ".audit/d3_fourth_review/browser_date_rejected.png",
+    "scope": "login and date-rejection flow; not a full UI or network audit"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "factor_values": {
+    "status": "COMPLETED",
+    "rows": 19,
+    "mismatches": 0,
+    "examples": [
+      {
+        "stock": "sh.600001",
+        "D3_value": "13.1192",
+        "existing_database_value": "13.1192000000000000"
+      },
+      {
+        "stock": "sh.600003",
+        "D3_value": "14.5192",
+        "existing_database_value": "14.5192000000000000"
+      },
+      {
+        "stock": "sh.600004",
+        "D3_value": "15.2192",
+        "existing_database_value": "15.2192000000000000"
+      }
+    ]
+  },
+  "slippage": {
+    "same_equity_curve_for_zero_and_1000_bps": false,
+    "filled_rows": 1,
+    "trades": [
+      [
+        "3400",
+        "26.3500",
+        "28.99",
+        "98566.00",
+        "98566.00"
+      ]
+    ],
+    "net_last_without_slippage": "100146.15",
+    "net_last_with_slippage": "91158.30"
+  },
+  "cash_cache": {
+    "first_request_cash": "100000",
+    "second_request_cash": "200000",
+    "first_id": 27,
+    "second_id": 27,
+    "incorrectly_reused": true
+  },
+  "mutable_version": {
+    "write_accepted": false,
+    "error_type": "InsufficientPrivilege",
+    "probe_rolled_back": true
+  },
+  "terminal_nav": {
+    "expected": "2025-05-30",
+    "actual": "2025-05-30",
+    "passed": true
+  },
+  "future_access": {
+    "trusted_research_date": "2025-05-30",
+    "requested_end": "2025-06-04",
+    "status": "COMPLETED",
+    "future_labels_returned": 76,
+    "note": "Scripted model used deliberately to test a malicious call, not a real-model acceptance claim."
+  },
+  "cancellation": {
+    "eval_id": 34,
+    "immediately_after_cancel": "CANCELLED",
+    "after_worker_finished": "COMPLETED",
+    "saved_values": 38,
+    "method": "Pause final computation in an isolated process, cancel through the real service, then allow the real database write to continue. No application files changed."
+  },
+  "verification": {
+    "date": "2026-10-29",
+    "database": "zhishi_d3_rereview_20261029_sample",
+    "full_tests": {
+      "passed": 98,
+      "seconds": 191.1
+    },
+    "d3_check": {
+      "passed": 11,
+      "seconds": 9.52
+    },
+    "sql_test_files": 13,
+    "ema_passed": true,
+    "overall": "NOT_ACCEPTED",
+    "new_live_ui_url": "http://127.0.0.1:8514/",
+    "real_deepseek_after_fixes": "NOT_RERUN"
+  },
+  "browser": {
+    "fresh_process_port": 8514,
+    "database": "zhishi_d3_rereview_20261029_sample",
+    "eval_id": 37,
+    "formula": "public daily VWAP",
+    "start": "2025-05-10",
+    "end": "2025-05-30",
+    "status": "COMPLETED",
+    "group_rows": 72,
+    "vwap_examples": [
+      "13.1192",
+      "14.5192",
+      "15.2192"
+    ],
+    "console_warn_error_entries": 0,
+    "screenshot": ".audit/d3_rereview/browser_groups.png",
+    "older_process": {
+      "port": 8512,
+      "eval_id": 32,
+      "stale_vwap_examples": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "scope": "login, public formula selection, submit, read statistics and groups; not a full network or all-user-flow audit"
+  }
+}

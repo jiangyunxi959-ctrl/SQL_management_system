@@ -1,0 +1,32 @@
+{
+  "source_entries": 370,
+  "catalog_count": 50,
+  "existing": 10,
+  "new": 40,
+  "unique_codes": 50,
+  "unique_expressions": 50,
+  "validated_with": "app.factors.validate.validate",
+  "category_counts": {
+    "成交均价": 6,
+    "收益与趋势": 18,
+    "日内形态": 8,
+    "成交活跃": 11,
+    "波动与流动性": 7
+  },
+  "source_adaptation_refs": {
+    "VWAP_D": [
+      "SRC-190"
+    ],
+    "RET_INTRADAY_D": [
+      "SRC-173"
+    ],
+    "RET_OVERNIGHT_D": [
+      "SRC-179"
+    ],
+    "RANGE_D": [
+      "SRC-016"
+    ]
+  },
+  "max_lookback": 251,
+  "max_nodes": 16
+}

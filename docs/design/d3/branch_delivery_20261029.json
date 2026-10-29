@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-29",
+  "branch": "d/factor-research-agent",
+  "base": "07f0de616b3352b14610cd388bb0e40e301a8adc",
+  "current_c_d_groups": [
+    {
+      "group": "d_backend",
+      "exit_code": 0,
+      "summary": "........................................................................ [ 76%]\n......................                                                   [100%]\n94 passed in 128.57s (0:02:08)",
+      "file_count": 22
+    },
+    {
+      "group": "c_backend",
+      "exit_code": 0,
+      "summary": "......                                                                   [100%]\n6 passed in 36.20s",
+      "file_count": 2
+    },
+    {
+      "group": "ui",
+      "exit_code": 0,
+      "summary": "....................                                                     [100%]\n20 passed in 38.28s",
+      "file_count": 6
+    }
+  ],
+  "current_c_d_total": 120,
+  "sql_files_passed": 13,
+  "fresh_database_checks": [
+    {
+      "check": "fresh_rebuild",
+      "exit_code": 0,
+      "tail": "[SQL] sql\\70_factor.sql\n[SQL] sql\\80_security_audit.sql\n[SQL] sql\\90_agent_gateway.sql\n[SQL] sql\\seed\\sample_data.sql\n[OK] rebuilt database 'zhishi_d_publish_clean_20261029_sample'"
+    },
+    {
+      "check": "fresh_sample",
+      "exit_code": 0,
+      "tail": "[PASS] A 的合成案例已载入，可重复执行"
+    },
+    {
+      "check": "fresh_sql",
+      "exit_code": 0,
+      "tail": "[PASS] test_sim_limits.sql\n[PASS] test_sim_rules.sql\n[PASS] EMA vs pandas (max error: ema12=3.55e-15, ema26=5.33e-15)\n[SUMMARY] daily_bar=10440, indicators=10440, DQ=(0, 0, 0)\n[ALL PASS] B 10/25 market + indicator acceptance passed"
+    },
+    {
+      "check": "a_python",
+      "exit_code": 0,
+      "tail": "\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK"
+    },
+    {
+      "check": "a_integration",
+      "exit_code": 0,
+      "tail": "[PASS] index 成员区间输入 1，新增 0\n[PASS] B CSV → A 证券/日历 → B 行情 → A ST 区间；名称截止、成员幂等\n[PASS] 财务入库：输入 6，实际变化 0\n[PASS] 三组真实更正、重复导入零变化、来源冲突拒绝、错误文件整批回滚（包括 staging 和 history）\n[ALL PASS] A CSV integration; temporary database removed"
+    },
+    {
+      "check": "a_ui",
+      "exit_code": 0,
+      "tail": "2026-10-29 16:00:52.915 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n[PASS] Streamlit 受限账号连接与四个日期场景"
+    }
+  ],
+  "repeat_install": {
+    "repeat_install_passed": true,
+    "public_factors": 50,
+    "bars": 10440,
+    "close_sum": "193028.6732",
+    "market_unchanged": true
+  },
+  "fresh_d3_checks": {
+    "passed": 18,
+    "duration_seconds": 24.34,
+    "overlaps_full_suite": true
+  },
+  "environment_note": "Existing Python virtual environment; isolated Windows metadata native fallback only. Real database, password operations and assertions unchanged. Initial database-unavailable attempt failed and is excluded from passing counts.",
+  "not_repeated": [
+    "live model scenarios",
+    "external financial download",
+    "backup restore",
+    "complete browser flow",
+    "clean-machine dependency installation"
+  ],
+  "scope_notes": "New branch only; no main merge, public deployment or real trading."
+}
