@@ -1,0 +1,112 @@
+[
+  {
+    "code": "VWAP_D",
+    "name": "当日成交均价",
+    "expression": "amount / volume",
+    "source_name": "VWAP_1D",
+    "source_page": "39",
+    "adaptation_note": "参考改编：用日成交额除以日成交股数。源文件公式缺失，不是供应商完整复现。",
+    "digest": "46e1397491480df85890bb38b47e1bddc3417d0eccd691e3d397f389ee2cac73",
+    "lookback": 1,
+    "unit": "元/股（未调整价格）"
+  },
+  {
+    "code": "RET_INTRADAY_D",
+    "name": "开盘至收盘收益",
+    "expression": "close_raw / open_raw - 1",
+    "source_name": "RET_INTRADAY",
+    "source_page": "33",
+    "adaptation_note": "参考改编：使用日开盘价，不冒充分钟 09:30 收盘起点。",
+    "digest": "83735be097c303ef60073ee167023d0794ca289baab8e10a6e178471c29a2946",
+    "lookback": 1,
+    "unit": "无单位"
+  },
+  {
+    "code": "RET_OVERNIGHT_D",
+    "name": "昨收至今开收益",
+    "expression": "open_hfq / lag(close_hfq,1) - 1",
+    "source_name": "INTRADAY_MOMENTUM_0H",
+    "source_page": "35",
+    "adaptation_note": "参考改编：使用日开盘和同口径调整后昨收，不使用竞价虚拟价格。",
+    "digest": "91abab7aa47ff7a92ed19ab98f75be71bc943dc194bb604b96c76982c13bc989",
+    "lookback": 2,
+    "unit": "无单位"
+  },
+  {
+    "code": "RANGE_D",
+    "name": "当天高低价幅度",
+    "expression": "high_raw / low_raw - 1",
+    "source_name": "AMP_STD",
+    "source_page": "10",
+    "adaptation_note": "主题参考改编：只是日高低价幅度，不是分钟振幅标准差。",
+    "digest": "3681e2bbb89ea4333d6467f724cd45a26e368bf6415a3577b06993ecf302c44d",
+    "lookback": 1,
+    "unit": "无单位"
+  },
+  {
+    "code": "VWAP20_D",
+    "name": "20 日成交均价",
+    "expression": "ts_sum(amount,20) / ts_sum(volume,20)",
+    "source_name": null,
+    "source_page": null,
+    "adaptation_note": "项目补充。窗口含当天；跨除权事件不给出可比较数值。",
+    "digest": "454b4cb0e17de81524dac280e1f166d940af1f9fea3db8a809b8908f3a8c24b0",
+    "lookback": 20,
+    "unit": "元/股（未调整价格）"
+  },
+  {
+    "code": "VWAP_BIAS_D",
+    "name": "收盘相对成交均价偏离",
+    "expression": "close_raw / (amount / volume) - 1",
+    "source_name": null,
+    "source_page": null,
+    "adaptation_note": "项目补充。原始价格口径一致，保存为小数。",
+    "digest": "abe0527de8830b5195b3de8b87756613a313382ff7e6a65cd0599ede06e6eed4",
+    "lookback": 1,
+    "unit": "无单位"
+  },
+  {
+    "code": "VOLUME_REL20_D",
+    "name": "相对此前20日的量比",
+    "expression": "volume / ts_mean(lag(volume,1),20)",
+    "source_name": null,
+    "source_page": null,
+    "adaptation_note": "项目补充。不是资料中的竞价量比，不沿用 VOLUME_RATIO 名称。",
+    "digest": "0636f3e6bd873b780aa710131fe0352633bd999bd61471748e67d760abd77915",
+    "lookback": 21,
+    "unit": "无单位"
+  },
+  {
+    "code": "MOM20_D",
+    "name": "20 日涨幅",
+    "expression": "close_hfq / lag(close_hfq,20) - 1",
+    "source_name": null,
+    "source_page": null,
+    "adaptation_note": "项目补充。与 B 的 20 日收益对照，不是供应商因子。",
+    "digest": "0ea5f179d294a8fcdec944ac88930fddbb0cf624e274fc0fd90156f66eee7f91",
+    "lookback": 21,
+    "unit": "无单位"
+  },
+  {
+    "code": "MA20_BIAS_D",
+    "name": "相对20日均价偏离",
+    "expression": "close_hfq / ts_mean(close_hfq,20) - 1",
+    "source_name": null,
+    "source_page": null,
+    "adaptation_note": "项目补充。均价窗口含当天，可与 B 的均价对照。",
+    "digest": "5627294ffe8a327f271fe772211cabd4d1e737970a13ff5f4c05395f2fec8112",
+    "lookback": 20,
+    "unit": "无单位"
+  },
+  {
+    "code": "VOL20_D",
+    "name": "20 日波动程度",
+    "expression": "ts_std(log(close_hfq / lag(close_hfq,1)),20) * sqrt(252)",
+    "source_name": null,
+    "source_page": null,
+    "adaptation_note": "项目补充。20 个日对数收益的样本标准差换算到年度口径，与 B 对照。",
+    "digest": "6ee43c84c6374425af744289f698a1ea97eacb179dd07b0e8012fc8dce7cbeb7",
+    "lookback": 21,
+    "unit": "无单位"
+  }
+]
